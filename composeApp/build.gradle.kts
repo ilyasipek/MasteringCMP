@@ -49,6 +49,9 @@ kotlin {
 
             // Stacked Snackbar
             implementation(libs.stackedSnackbar)
+
+            // Voyager
+            implementation(libs.voyager.navigator)
         }
     }
 }

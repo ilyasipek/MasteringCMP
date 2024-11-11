@@ -21,6 +21,9 @@ sonner = "0.3.8"
 # Compose Stacked Snackbar
 composeStackedSnackbar = "1.0.4"
 
+# Voyager
+voyager = "1.1.0-beta02"
+
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -40,6 +43,9 @@ sonner = { module = "io.github.dokar3:sonner", version.ref = "sonner" }
 
 # Compose Stacked Snackbar
 stackedSnackbar = { module = "io.github.rizmaulana:compose-stacked-snackbar", version.ref = "composeStackedSnackbar" }
+
+# Voyager
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
