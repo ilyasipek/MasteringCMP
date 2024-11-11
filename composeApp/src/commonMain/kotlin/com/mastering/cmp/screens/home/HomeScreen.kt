@@ -16,9 +16,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
-import com.dokar.sonner.Toaster
-import com.dokar.sonner.rememberToasterState
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.mastering.cmp.Greeting
+import com.mastering.cmp.screens.sonnertoast.SonnerToastScreen
 import masteringcmp.composeapp.generated.resources.Res
 import masteringcmp.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
@@ -43,8 +44,6 @@ private fun HomeScreenContent(
         maxStack = 1,
     )
 
-    val toaster = rememberToasterState()
-
     var counter by remember { mutableStateOf(0) }
 
     Scaffold(
@@ -55,26 +54,20 @@ private fun HomeScreenContent(
             Text("This is a bottom bar")
         }
     ) {
-        Toaster(
-            state = toaster,
-            darkTheme = true,
-            richColors = true,
-        )
 
+        val navigator = LocalNavigator.currentOrThrow
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            Button(onClick = {
+                navigator.push(SonnerToastScreen())
+            }) {
+                Text("Sonner Toast")
+            }
             Button(onClick = { showContent = !showContent }) {
                 Text("Click me!")
             }
 
             Button(onClick = {
                 counter++
-//                    toaster.show(
-//                        "Hello world! $counter",
-//                        type = ToastType.Error
-//                    )
-//                    toaster.show(
-//                        Toast("Hello world! $counter", type = ToastType.Info)
-//                    )
                 stackedSnackbarHostState.showInfoSnackbar("Info Snackbar")
             }) {
                 Text("Show a toast")
